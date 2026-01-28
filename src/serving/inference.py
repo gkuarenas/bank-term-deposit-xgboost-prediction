@@ -40,3 +40,9 @@ except Exception as e:
 # Any changes here will cause train/serve skew and degrade model performance
 
 # Deterministic binary feature mappings (consistent with training)
+
+BINARY_MAP = {
+    "default": {"no": 0, "yes": 1},
+    "housing": {"no": 0, "yes": 1},
+    "loan": {"no": 0, "yes": 1},
+}
