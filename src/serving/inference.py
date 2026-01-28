@@ -11,19 +11,37 @@ try:
     print(f"Model loaded successfuly from {MODEL_DIR}")
 except Exception as e:
     print(f"Failed to load model from {MODEL_DIR}: {e}")
-    # Try loading from local MLflow tracking
-    try:
-        import glob
-        local_model_paths = list(Path("./mlruns").glob("*/*/artifacts.model"))
-        if local_model_paths:
-            latest_model = max(local_model_paths, key=lambda p: p.stat().st_mtime)
-            model = mlflow.pyfunc.load_model(str(latest_model))
-            MODEL_DIR = latest_model
-            print(f"Fallback: Loaded model from {latest_model}")
-        else:
-            raise Exception("No model found in local mlruns")
-    except Exception as fallback_error:
-        raise Exception(f"Failed to load model: {e}. Fallback failed: {fallback_error}")
+    from pathlib import Path
+import mlflow
+
+# Try loading from local MLflow tracking (matches your layout:
+# mlruns/<experiment_id>/models/<model_id>/artifacts/MLmodel)
+try:
+    mlmodel_files = list(Path("mlruns").glob("*/models/*/artifacts/MLmodel"))
+
+    # Optional: also support the more common run-based layout
+    # mlruns/<experiment_id>/<run_id>/artifacts/<artifact_path>/MLmodel
+    mlmodel_files += list(Path("mlruns").glob("*/*/artifacts/**/MLmodel"))
+
+    if not mlmodel_files:
+        raise FileNotFoundError(
+            "No MLmodel found under ./mlruns. Expected something like "
+            "mlruns/<exp_id>/models/<model_id>/artifacts/MLmodel"
+        )
+
+    # Pick the most recently modified MLmodel file, then load its parent dir
+    latest_mlmodel = max(mlmodel_files, key=lambda p: p.stat().st_mtime)
+    latest_model_dir = latest_mlmodel.parent  # .../artifacts
+
+    model = mlflow.pyfunc.load_model(str(latest_model_dir))
+    MODEL_DIR = latest_model_dir
+    print(f"Fallback: Loaded model from {latest_model_dir}")
+
+except Exception as fallback_error:
+    # (Optional) 'e' comes from your primary load attempt. If it may not exist, guard it:
+    primary_error = globals().get("e", "unknown primary error")
+    raise Exception(f"Failed to load model: {primary_error}. Fallback failed: {fallback_error}")
+
 
 # ===== FEATURE SCHEMA LOADING ===== #
 # CRITICAL: Load the exact feature column order used during training

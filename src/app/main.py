@@ -5,7 +5,7 @@ FASTAPI + GRADIO SERVING APPLICATION
 from fastapi import FastAPI
 from pydantic import BaseModel
 import gradio as gr
-from src.serving.inference import predict
+from serving.inference import predict
 
 # ===== Initialize FastAPI App ===== #
 app = FastAPI(
