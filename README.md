@@ -161,4 +161,4 @@ Then once runnning, go to `http://127.0.0.1:8000/ui`
 - Improvement to the ML prediction model.
 - Add threshold tuning + PR-AUC tracking for imbalanced classification.
 - Add CI (GitHub Actions) to run lint + tests on every push.
-- Containerize training/inference end-to-end with Docker Compose.
+- *Finish containerizing* training/inference end-to-end with Docker.
