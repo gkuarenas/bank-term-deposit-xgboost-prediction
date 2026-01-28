@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Guillaume/Documents/PROJECTS/ML-Bank-Marketing/mlruns/640754703172258164/models/m-04a577d9365e4448b2b372c22ef287f3/artifacts
+creation_timestamp: 1769579671136
+experiment_id: '640754703172258164'
+last_updated_timestamp: 1769579673953
+model_id: m-04a577d9365e4448b2b372c22ef287f3
+model_type: null
+name: model
+source_run_id: 5ce4c3b24e8849d89baf004cbfee992b
+status: 2
+status_message: null
