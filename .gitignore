@@ -30,7 +30,7 @@ Thumbs.db
 # ---- ML / Artifacts (your folders) ----
 mlruns/
 artifacts/
-data/
+/data/
 
 # ---- Logs ----
 *.log
