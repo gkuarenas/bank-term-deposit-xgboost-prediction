@@ -133,6 +133,7 @@ python scripts/run_pipeline.py --mlflow_uri http://127.0.0.1:5000 --run_name run
 fastapi dev src/app/main.py
 ```
 Then once runnning, go to `http://127.0.0.1:8000/ui`
+
 ---
 
 ## Common Problems Encountered (and fixes)
