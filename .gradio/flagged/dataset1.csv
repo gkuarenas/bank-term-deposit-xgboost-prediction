@@ -1,0 +1,2 @@
+Age,Job,Marital Status,Education,Credit in Default?,Average Yearly Balance (€),Has Housing Loan?,Has Personal Loan?,Contact Type,Last Contact Day of Month,Last Contact Month,Last Contact Duration (seconds),Campaign Contacts (this campaign),Pdays (days since last contact; -1 = not previously contacted),Previous Contacts (before this campaign),Previous Outcome,Term Deposit Prediction,timestamp
+38,admin.,divorced,tertiary,no,1000,no,no,cellular,15,may,120,1,'-1,0,unknown,,2026-01-28 14:58:27.683302
