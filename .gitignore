@@ -1,0 +1,36 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# ---- Virtual env ----
+.venv/
+venv/
+env/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- OS / Editor ----
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ---- Secrets ----
+.env
+.env.*
+*.pem
+*.key
+
+# ---- ML / Artifacts (your folders) ----
+mlruns/
+artifacts/
+data/
+
+# ---- Logs ----
+*.log
